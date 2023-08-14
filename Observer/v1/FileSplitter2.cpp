@@ -6,7 +6,7 @@ using std::vector;
 
 class IProgress{
 public:
-	virtual void DoProgress(float value)=0;
+	virtual void DoProgress(float value) = 0;
 	virtual ~IProgress(){}
 };
 
@@ -54,7 +54,7 @@ public:
 protected:
 	virtual void onProgress(float value){
 		
-		vector<IProgress*>::iterator itor=m_iprogressList.begin();
+		vector<IProgress*>::iterator itor = m_iprogressList.begin();
 
 		while (itor != m_iprogressList.end() ){
 			(*itor)->DoProgress(value); //更新进度条

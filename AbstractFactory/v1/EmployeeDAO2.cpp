@@ -1,3 +1,4 @@
+#include <vector>
 
 //数据库访问有关的基类
 class IDBConnection{
@@ -6,7 +7,7 @@ class IDBConnection{
 
 class IDBConnectionFactory{
 public:
-    virtual IDBConnection* CreateDBConnection()=0;
+    virtual IDBConnection* CreateDBConnection() = 0;
 };
 
 
@@ -15,7 +16,7 @@ class IDBCommand{
 };
 class IDBCommandFactory{
 public:
-    virtual IDBCommand* CreateDBCommand()=0;
+    virtual IDBCommand* CreateDBCommand() = 0;
 };
 
 
@@ -24,11 +25,11 @@ class IDataReader{
 };
 class IDataReaderFactory{
 public:
-    virtual IDataReader* CreateDataReader()=0;
+    virtual IDataReader* CreateDataReader() = 0;
 };
 
 
-//支持SQL Server
+// 支持SQL Server
 class SqlConnection: public IDBConnection{
     
 };
@@ -52,7 +53,7 @@ class SqlDataReaderFactory:public IDataReaderFactory{
     
 };
 
-//支持Oracle
+// 支持Oracle
 class OracleConnection: public IDBConnection{
     
 };
@@ -71,10 +72,10 @@ class EmployeeDAO{
     IDBConnectionFactory* dbConnectionFactory;
     IDBCommandFactory* dbCommandFactory;
     IDataReaderFactory* dataReaderFactory;
-    
+    // 必须要求所创建的三个工厂产生的对象属于同一产品族
     
 public:
-    vector<EmployeeDO> GetEmployees(){
+    vector<EmployeeDAO> GetEmployees(){
         IDBConnection* connection =
             dbConnectionFactory->CreateDBConnection();
         connection->ConnectionString("...");

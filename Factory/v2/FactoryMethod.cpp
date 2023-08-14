@@ -96,7 +96,7 @@ public:
     return new ConcreteProductB();
   }
   
-  void removeProduct( Product *product )
+  void removeProduct(Product *product)
   {
     delete product;
   }

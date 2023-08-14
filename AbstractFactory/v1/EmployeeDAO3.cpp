@@ -15,10 +15,10 @@ class IDataReader{
 
 class IDBFactory{
 public:
-    virtual IDBConnection* CreateDBConnection()=0;
-    virtual IDBCommand* CreateDBCommand()=0;
-    virtual IDataReader* CreateDataReader()=0;
-    
+    virtual IDBConnection* CreateDBConnection() = 0;
+    virtual IDBCommand* CreateDBCommand() = 0;
+    virtual IDataReader* CreateDataReader() = 0;
+    // 高内聚，松耦合
 };
 
 
@@ -34,25 +34,33 @@ class SqlDataReader: public IDataReader{
 };
 
 
-class SqlDBFactory:public IDBFactory{
+class SqlDBFactory : public IDBFactory{
 public:
-    virtual IDBConnection* CreateDBConnection()=0;
-    virtual IDBCommand* CreateDBCommand()=0;
-    virtual IDataReader* CreateDataReader()=0;
+    virtual IDBConnection* CreateDBConnection() = 0;
+    virtual IDBCommand* CreateDBCommand() = 0;
+    virtual IDataReader* CreateDataReader() = 0;
  
 };
 
 //支持Oracle
-class OracleConnection: public IDBConnection{
+class OracleConnection : public IDBConnection{
     
 };
 
-class OracleCommand: public IDBCommand{
+class OracleCommand : public IDBCommand{
     
 };
 
-class OracleDataReader: public IDataReader{
+class OracleDataReader : public IDataReader{
     
+};
+
+class OracleDBFactory : public IDBFactory{
+public:
+    virtual IDBConnection* CreateDBConnection() = 0;
+    virtual IDBCommand* CreateDBCommand() = 0;
+    virtual IDataReader* CreateDataReader() = 0;
+ 
 };
 
 
@@ -61,7 +69,7 @@ class EmployeeDAO{
     IDBFactory* dbFactory;
     
 public:
-    vector<EmployeeDO> GetEmployees(){
+    vector<EmployeeDAO> GetEmployees(){
         IDBConnection* connection =
             dbFactory->CreateDBConnection();
         connection->ConnectionString("...");

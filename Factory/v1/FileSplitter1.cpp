@@ -10,19 +10,19 @@ class BinarySplitter : public ISplitter{
     }
 };
 
-class TxtSplitter: public ISplitter{
+class TxtSplitter : public ISplitter{
     void split(){
         // ...
     }
 };
 
-class PictureSplitter: public ISplitter{
+class PictureSplitter : public ISplitter{
     void split(){
         // ...
     }
 };
 
-class VideoSplitter: public ISplitter{
+class VideoSplitter : public ISplitter{
     void split(){
         // ...
     }
