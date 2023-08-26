@@ -1,7 +1,7 @@
 // 抽象类
 class ISplitter{
 public:
-    virtual void split()=0;
+    virtual void split() = 0;
     virtual ~ISplitter(){}
 };
 

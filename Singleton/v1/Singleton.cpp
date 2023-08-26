@@ -7,13 +7,15 @@ class Lock{
 
 class Singleton{
 private:
+    // 如果不声明构造函数与拷贝构造函数，则编译器会自动生成public的构造函数与拷贝构造函数
     Singleton();
     Singleton(const Singleton& other);
     // 必须将构造函数和拷贝构造函数显式声明为private，不能省略
     // 也可以将构造函数设为protected，以允许派生类访问
 public:
-    static Singleton* getInstance();
-    static Singleton* m_instance;
+    static Singleton* getInstance(); // 静态成员函数，不含有this指针，因此不可以是const成员函数；不可以是虚函数
+    // 除构造函数之外的非静态函数都可以是虚函数
+    static Singleton* m_instance; // 静态成员变量
 };
 
 Singleton* Singleton::m_instance = nullptr;
@@ -33,10 +35,10 @@ Singleton* Singleton::getInstance() {
     if (m_instance == nullptr) {
         m_instance = new Singleton();
     }
-    return m_instance;
+    return m_instance; 
 }
 
-// 双检查(两次if判断) 锁，但由于内存读写reorder不安全
+// 双检查(两次if判断)锁，但由于内存读写reorder不安全
 Singleton* Singleton::getInstance() {
     if (m_instance == nullptr){
         Lock lock; // 只锁定写操作的代码
@@ -69,11 +71,3 @@ Singleton* Singleton::getInstance() {
     }
     return tmp;
 }
-
-
-
-
-
-
-
-

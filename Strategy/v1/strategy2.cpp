@@ -12,7 +12,7 @@ public:
 
 class TaxStrategy{
 public:
-    virtual double Calculate(const Context& context)=0;
+    virtual double Calculate(const Context& context) = 0;
     virtual ~TaxStrategy(){}
 };
 
@@ -52,7 +52,7 @@ public:
 
 class SalesOrder{
 private:
-    TaxStrategy* strategy;
+    TaxStrategy* strategy; // 基类类型的指针
 
 public:
     // 工厂模式
@@ -67,7 +67,7 @@ public:
         //...
         Context context;
         
-        double val = strategy->Calculate(context); //多态调用
+        double val = strategy->Calculate(context); // 多态调用
         //...
     }
     

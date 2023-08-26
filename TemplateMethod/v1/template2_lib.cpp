@@ -6,7 +6,8 @@ using namespace std;
 class Library
 {
   public:
-    //稳定 template method
+    // 稳定 template method
+    // 非虚函数可以调用虚函数
     void Run()
     {
         Step1();

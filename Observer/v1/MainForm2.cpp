@@ -72,7 +72,7 @@ public:
 
 		splitter.removeIProgress(this);
 
-	}
+	} 
 
 	virtual void DoProgress(float value){
 		progressBar->setValue(value);

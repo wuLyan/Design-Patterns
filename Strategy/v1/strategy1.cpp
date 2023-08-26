@@ -13,14 +13,11 @@ public:
         
         if (tax == CN_Tax){
             //CN***********
-        }
-        else if (tax == US_Tax){
+        } else if (tax == US_Tax) {
             //US***********
-        }
-        else if (tax == DE_Tax){
+        } else if (tax == DE_Tax) {
             //DE***********
-        }
-		else if (tax == FR_Tax){  //更改
+        } else if (tax == FR_Tax) {  //更改
 			//...
 		}
 
