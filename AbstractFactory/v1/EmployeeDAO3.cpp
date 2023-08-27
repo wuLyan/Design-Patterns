@@ -18,7 +18,8 @@ public:
     virtual IDBConnection* CreateDBConnection() = 0;
     virtual IDBCommand* CreateDBCommand() = 0;
     virtual IDataReader* CreateDataReader() = 0;
-    // 高内聚，松耦合
+    // 高内聚：保证创建的是同一产品组的类对象
+    // 松耦合
 };
 
 
@@ -66,7 +67,7 @@ public:
 
 
 class EmployeeDAO{
-    IDBFactory* dbFactory;
+    IDBFactory* dbFactory; // 同一个工厂创建保证了关联性
     
 public:
     vector<EmployeeDAO> GetEmployees(){

@@ -72,7 +72,7 @@ class EmployeeDAO{
     IDBConnectionFactory* dbConnectionFactory;
     IDBCommandFactory* dbCommandFactory;
     IDataReaderFactory* dataReaderFactory;
-    // 必须要求所创建的三个工厂产生的对象属于同一产品族
+    // 必须要求用户所创建的三个工厂产生的对象属于同一产品族
     
 public:
     vector<EmployeeDAO> GetEmployees(){
@@ -83,9 +83,9 @@ public:
         IDBCommand* command =
             dbCommandFactory->CreateDBCommand();
         command->CommandText("...");
-        command->SetConnection(connection); //关联性
+        command->SetConnection(connection); // 关联性
 
-        IDBDataReader* reader = command->ExecuteReader(); //关联性
+        IDBDataReader* reader = command->ExecuteReader(); // 关联性
         while (reader->Read()){
 
         }
