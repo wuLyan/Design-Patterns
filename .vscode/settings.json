@@ -1,7 +1,8 @@
 {
     "cSpell.words": [
         "iprogress",
-        "itor"
+        "itor",
+        "Messager"
     ],
     "files.associations": {
         "atomic": "cpp"

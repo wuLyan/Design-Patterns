@@ -54,22 +54,24 @@ public:
 
 //扩展操作
 
-// 由于两个子类有相同的成员Stream*，所以这个成员要往上提
-class DecoratorStream: public Stream{
+// 由于两个子类有相同的成员Stream*，所以这个成员变量要往上提
+// 装饰操作
+class DecoratorStream : public Stream{
 protected:
     Stream* stream;//...
     
-    DecoratorStream(Stream * stm):stream(stm){
+    DecoratorStream(Stream * stm) : stream(stm){
     
     }
     
 };
 
+// 加密流操作
 class CryptoStream: public DecoratorStream {
  
 
 public:
-    CryptoStream(Stream* stm):DecoratorStream(stm){
+    CryptoStream(Stream* stm) : DecoratorStream(stm){
     
     }
     
@@ -77,28 +79,28 @@ public:
     virtual char Read(int number){
        
         //额外的加密操作...
-        stream->Read(number);//读文件流
+        stream->Read(number);//读
     }
     virtual void Seek(int position){
         //额外的加密操作...
-        Stream::Seek(position);//定位文件流
+        Stream::Seek(position);//定位
         //额外的加密操作...
     }
     virtual void Write(char data){
         //额外的加密操作...
-        Stream::Write(data);//写文件流
+        Stream::Write(data);//写
         //额外的加密操作...
     }
 };
 
 
-
-class BufferedStream : public DecoratorStream{
+// 缓存流操作
+class BufferedStream : public DecoratorStream {
     
     Stream* stream;//...
     
 public:
-    BufferedStream(Stream* stm):DecoratorStream(stm){
+    BufferedStream(Stream* stm) : DecoratorStream(stm){
         
     }
 
@@ -117,16 +119,10 @@ public:
 
 
 void Process(){
-
     //运行时装配
     FileStream* s1=new FileStream();
     
-    CryptoStream* s2=new CryptoStream(s1);
-    
+    CryptoStream* s2=new CryptoStream(s1);  
     BufferedStream* s3=new BufferedStream(s1);
-    
     BufferedStream* s4=new BufferedStream(s2);
-    
-    
-
 }
