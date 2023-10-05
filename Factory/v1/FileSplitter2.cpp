@@ -1,4 +1,4 @@
-#include"ISplitterFactory.cpp"
+#include "ISplitterFactory.cpp"
 
 // 具体类
 class BinarySplitter : public ISplitter{

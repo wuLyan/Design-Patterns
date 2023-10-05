@@ -2,15 +2,15 @@
 class Stream{
 
 public:
-    virtual char Read(int number)=0;
-    virtual void Seek(int position)=0;
-    virtual void Write(char data)=0;
+    virtual char Read(int number) = 0;
+    virtual void Seek(int position) = 0;
+    virtual void Write(char data) = 0;
     
     virtual ~Stream(){}
 };
 
 //主体类
-class FileStream: public Stream{
+class FileStream : public Stream{
 public:
     virtual char Read(int number){
         //读文件流
@@ -120,9 +120,9 @@ public:
 
 void Process(){
     //运行时装配
-    FileStream* s1=new FileStream();
+    FileStream* s1 = new FileStream();
     
-    CryptoStream* s2=new CryptoStream(s1);  
-    BufferedStream* s3=new BufferedStream(s1);
-    BufferedStream* s4=new BufferedStream(s2);
+    CryptoStream* s2 = new CryptoStream(s1);  
+    BufferedStream* s3 = new BufferedStream(s1);
+    BufferedStream* s4 = new BufferedStream(s2);
 }

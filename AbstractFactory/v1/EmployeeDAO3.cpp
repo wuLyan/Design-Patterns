@@ -1,4 +1,8 @@
+#include <iostream>
+#include <string>
+#include <vector>
 
+using namespace std;
 //数据库访问有关的基类
 class IDBConnection{
     
